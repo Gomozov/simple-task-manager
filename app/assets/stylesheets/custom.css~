@@ -4,6 +4,10 @@
 }
 
 /*header*/
+header {
+  padding-top: 20px;
+}
+
 nav {
   float: right;
 }

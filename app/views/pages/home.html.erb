@@ -1,3 +1,11 @@
-<div class="hero-unit">
-  <h1>Home</h1>
-</div>
+<% if current_user %>
+  <div class="hero-unit">
+    <h2>DASHBOARD</h2>
+    <%= link_to "CREATE PROJECT +", '#', :class => 'btn btn-primary' %>
+  </div>
+<% else %>
+  <div class="hero-unit">
+    <h2>WELCOME TO SIMPLE TASK MANAGER<h2>
+    <%= link_to "SIGN UP NOW", signup_path , :class => 'btn btn-danger' %>
+  </div>
+<% end %>
