@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @projects = @user.projects
+    @title = @user.name
   end
 
   def create
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
 
   def edit              
     @title = "Edit user"
+    @user = User.find(params[:id])
   end                   
 
   def update                                 
@@ -40,8 +43,14 @@ class UsersController < ApplicationController
   def index                                                             
     @title = "All users"                                                
     @users = User.all
-  end                                                                   
+  end
 
+  def destroy                          
+    User.find(params[:id]).destroy     
+    flash[:success] = "User destroyed."
+    redirect_to users_path             
+  end                                  
+  
   private
 
   def login_required

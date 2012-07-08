@@ -1,7 +1,17 @@
 <% if current_user %>
   <div class="hero-unit">
-    <h2>DASHBOARD</h2>
-    <%= link_to "CREATE PROJECT +", '#', :class => 'btn btn-primary' %>
+    <div class="pull-left">
+      <h2>DASHBOARD</h2>
+      <%= link_to "CREATE PROJECT +", new_project_path, :class => 'btn btn-primary' %>
+    </div>
+    <div class="pull-right">
+      <td class="sidebar round">
+        <strong>Name:</strong> <%= current_user.name %><br />
+        <strong>URL:</strong> <%= link_to user_path(current_user), current_user %><br />
+        <strong>Projects:</strong> <%= current_user.projects.count %> 
+      </td>
+    </div>
+    <br>
   </div>
 <% else %>
   <div class="hero-unit">

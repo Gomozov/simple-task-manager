@@ -11,7 +11,7 @@ def create
     flash[:success] = "Log in."
     redirect_to root_url
   else
-    flash.now.alert = "Invalid email or password"
+    flash[:error] = "Invalid email or password"
     render "new"
   end
 end

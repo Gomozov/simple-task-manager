@@ -1,2 +1,17 @@
-<%= @user.name %>
-<%= @user.email %>
+<td class="sidebar round">
+  <strong>Name:</strong> <%= @user.name %><br />
+  <strong>URL:</strong> <%= link_to user_path(@user), @user %><br />
+  <strong>projects:</strong> <%= @user.projects.count %>
+</td>
+
+<% unless @user.projects.empty? %>
+  <table class="projects" summary="User projects">
+    <% @projects.each do |project| %>
+      <tr>
+        <th><%= project.user_id %></th>
+        <th><%= project.title %></th>
+        <th><%= project.description %></th>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

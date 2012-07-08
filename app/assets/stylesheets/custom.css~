@@ -1,37 +1,8 @@
-.container {
-  width: 710px;
-  margin: auto;
-}
+body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
 
-/*header*/
-header {
-  padding-top: 20px;
-}
-
-nav {
-  float: right;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
-}
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
+.welcom_message {
+        font-size: 11px; text-align: right; line-height: 1; color: #aaaaaa; margin-right: 7px;
 }

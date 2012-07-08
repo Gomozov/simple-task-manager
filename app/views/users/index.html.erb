@@ -1,9 +1,28 @@
 <h2>List of users</h2>
   
-<ul class="users">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Email adress</th>
+      <% if current_user.admin? %>
+        <th>Delete user</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-     <li>
-       <%= link_to user.name, user %>
-    </li>
-  <% end %> 
-</ul> 
+    <tr>
+       <th><%= user.id %></th>
+       <th><%= link_to user.name, user %></th>
+       <th><%= user.email %></th>
+       <% if current_user.admin? %>
+         <th><%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                         :title => "Delete #{user.name}" %></th>
+       <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+ 
