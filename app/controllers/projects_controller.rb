@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
 before_filter :login_required
+before_filter :authorized_user, :only => [:edit, :update, :destroy]
 
 def new
   @project = Project.new
@@ -18,7 +19,32 @@ def create
       end
 end
 
-def destroy
+def destroy                          
+  Project.find(params[:id]).destroy     
+  flash[:success] = "Project destroyed."
+  redirect_to current_user             
+end                                  
+
+
+def edit                                   
+  @title = "Edit project"                     
+  @project = Project.find(params[:id])           
+end                                        
+                                             
+def update                                 
+  @project = Project.find(params[:id])           
+  if @project.update_attributes(params[:project])
+    flash[:success] = "Project updated."   
+    redirect_to @project                     
+  else                                     
+    @title = "Edit project"                   
+    render 'edit'
+  end  
+end                                        
+
+def show                        
+  @project = Project.find(params[:id])    
+  @title = @project.title           
 end
 
 private
@@ -28,7 +54,11 @@ def login_required
     flash[:info] = "Please input your login and password first."
     redirect_to signin_path
   end                                                           
-end                                                             
+end                                                                                                 
 
+def authorized_user
+  @project = current_user.projects.find_by_id(params[:id])
+  redirect_to current_user if @project.nil?
+end 
 
 end

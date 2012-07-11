@@ -11,6 +11,8 @@ gem 'sqlite3'
 gem "therubyracer", :require => 'v8'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faker', '~> 1.0.1'
+gem 'will_paginate', '~>3.0.3'
+gem 'will_paginate-bootstrap'
 
 # Gems used only for assets and not required
 # in production environments by default.

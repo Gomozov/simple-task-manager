@@ -18,7 +18,7 @@ namespace :db do
 
     User.all(:limit => 6).each do |user|
       5.times do
-        user.projects.create!(:title => Faker::Lorem.sentence(5), :description => "Description")
+        user.projects.create!(:title => Faker::Lorem.sentence(1), :description => Faker::Lorem.sentence(5))
       end
     end
 

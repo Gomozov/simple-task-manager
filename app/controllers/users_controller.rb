@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   
   before_filter :login_required, :only => [:index, :edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => :destroy          
   
   def new
     @user = User.new
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
 
   def index                                                             
     @title = "All users"                                                
-    @users = User.all
+    @users = User.paginate(:page => params[:user_page], :per_page => 10 )
   end
 
   def destroy                          
@@ -59,5 +61,14 @@ class UsersController < ApplicationController
       redirect_to signin_path
     end
   end
+
+  def correct_user                                     
+    @user = User.find(params[:id])                     
+    redirect_to(root_path) unless @user == current_user
+  end                                                  
+                                                       
+  def admin_user                                       
+    redirect_to(root_path) unless current_user.admin?  
+  end                                                  
 
 end

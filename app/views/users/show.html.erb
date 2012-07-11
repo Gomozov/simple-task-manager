@@ -1,17 +1,43 @@
-<td class="sidebar round">
-  <strong>Name:</strong> <%= @user.name %><br />
-  <strong>URL:</strong> <%= link_to user_path(@user), @user %><br />
-  <strong>projects:</strong> <%= @user.projects.count %>
-</td>
+<div class="pull-right">
+  <table class="table">
+    <tr>
+      <th><i class= "icon-user"></i><strong> Name:</strong></th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th><i class= "icon-search"></i><strong> URL:</strong></th>
+      <th><%= link_to user_path(@user), @user %></th>
+    </tr>
+    <tr>
+      <th><i class= "icon-folder-open"></i><strong> Projects:</strong></th>
+      <th><%= @user.projects.count %></th>
+    </tr>  
+  </table>
+</div> 
 
-<% unless @user.projects.empty? %>
-  <table class="projects" summary="User projects">
+<div class="pull-left">
+  <% unless @user.projects.empty? %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th><i class= "icon-folder-open"></i> Project</th>         
+        <th><i class= "icon-info-sign"></i> Description</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <th><%= project.user_id %></th>
         <th><%= project.title %></th>
         <th><%= project.description %></th>
+        <th><%= link_to "show", project %></th>
+        <% if project.user_id == current_user.id %>
+          <th><%= link_to "edit", edit_project_path(project) %></th>
+          <th><%= link_to "delete", project, :method => :delete, :confirm => "You sure?",
+                                                        :title => "Delete #{project.title}" %></th>
+        <% end %>
       </tr>
     <% end %>
+  </tbody>  
   </table>
 <% end %>
+</div>

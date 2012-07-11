@@ -3,15 +3,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Username</th>
-      <th>Email adress</th>
+      <th><i class= "icon-list-alt"></i></th>
+      <th><i class= "icon-user"></i> Username</th>
+      <th><i class= "icon-envelope"></i> Email adress</th>
       <% if current_user.admin? %>
-        <th>Delete user</th>
+        <th><i class= "icon-trash"></i> Delete user</th>
       <% end %>
     </tr>
   </thead>
-  <tbody>
+  <tbody>  
+
   <% @users.each do |user| %>
     <tr>
        <th><%= user.id %></th>
@@ -23,6 +24,8 @@
        <% end %>
     </tr>
   <% end %>
+  <%= will_paginate @users, :param_name => 'user_page', :renderer => BootstrapPagination::Rails%>
+
   </tbody>
 </table>
  
