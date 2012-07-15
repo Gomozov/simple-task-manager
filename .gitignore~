@@ -13,9 +13,3 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
-# Ignore all temporary files
-*.swo
-*.swp
-*.log
-

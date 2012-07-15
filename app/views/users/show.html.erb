@@ -26,18 +26,24 @@
     </thead>
     <tbody>
     <% @projects.each do |project| %>
+      <% if project.public || project.user_id == current_user.id %>
       <tr>
-        <th><%= project.title %></th>
+        <th><%= link_to project.title, project %></th>
         <th><%= project.description %></th>
-        <th><%= link_to "show", project %></th>
         <% if project.user_id == current_user.id %>
-          <th><%= link_to "edit", edit_project_path(project) %></th>
-          <th><%= link_to "delete", project, :method => :delete, :confirm => "You sure?",
-                                                        :title => "Delete #{project.title}" %></th>
+          <th><%= link_to "edit", edit_project_path(project), :class => 'btn btn-mini' %>
+          <%= link_to "delete", project, :method => :delete, :confirm => "You sure?",
+            :title => "Delete #{project.title}", :class => 'btn btn-mini btn-danger' %></th>
         <% end %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>  
   </table>
+<% end %>
+<% if @user == current_user %>
+  <%= link_to (new_project_path), :class => 'btn btn-primary' do %>
+    ADD PROJECT
+  <% end %>
 <% end %>
 </div>

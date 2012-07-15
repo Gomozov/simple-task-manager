@@ -1,27 +1,2 @@
-<% if current_user %>
-    <div class="pull-left">
-      <h2>DASHBOARD</h2>
-      <%= link_to (new_project_path), :class => 'btn btn-primary' do %>
-        <strong>ADD PROJECT</strong> <i class = "icon-plus icon-white"></i>
-      <% end %>
-    </div>
-    <div class="pull-right">
-      <table class="table">
-        <tr>
-         <th><i class= "icon-user"></i><strong> Name:</strong></th>
-         <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-         <th><i class= "icon-search"></i><strong> URL:</strong></th>
-         <th><%= link_to user_path(current_user), current_user %></th>
-       </tr>
-       <tr>
-         <th><i class= "icon-folder-open"></i><strong> Projects:</strong></th>
-         <th><%= current_user.projects.count %></th>
-       </tr>  
-      </table>
-    </div> 
-<% else %>
-    <h2>WELCOME TO SIMPLE TASK MANAGER<h2>
-    <%= link_to "SIGN UP NOW", signup_path , :class => 'btn btn-danger' %>
-<% end %>
+<h2>WELCOME TO SIMPLE TASK MANAGER<h2>
+<%= link_to "SIGN UP NOW", signup_path , :class => 'btn btn-danger' %>
