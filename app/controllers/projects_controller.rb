@@ -44,7 +44,8 @@ end
 
 def show                        
   @project = Project.find(params[:id])    
-  @title = @project.title           
+  @title = @project.title
+  @stories = @project.stories
 end
 
 private

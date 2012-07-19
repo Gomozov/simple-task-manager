@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   validates_presence_of :password
 
   has_many :projects, :dependent => :destroy
+  has_many :stories, :dependent => :destroy
 
 end

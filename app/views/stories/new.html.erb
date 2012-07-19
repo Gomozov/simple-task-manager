@@ -1,0 +1,17 @@
+<h2>Create story</h2> 
+  
+<%= form_for (@story) do |f| %>
+  <%= render 'layouts/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :story_type %>
+    <%= f.text_field :story_type %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.hidden_field :project_id, :value => params[:project_id] %>
+  <div class="actions">
+    <%= f.submit "Submit", :class => 'btn btn-primary' %>
+  </div>
+<% end %>

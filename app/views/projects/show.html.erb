@@ -1,4 +1,66 @@
-<h2>Project</h2>                   
-      
-<%= @project.title %>
-<%= @project.description %>  
+<div class="pull-left">
+  <h2><%= @project.title %></h2>
+  <%= @project.description %>
+</div>
+<div class="pull-right">
+  <%= link_to "ADD STORY", new_story_path(:project_id => @project.id), :class => 'btn btn-primary' %>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th><i class= "icon-ok"></i> Done</th>         
+      <th><i class= "icon-edit"></i> Current</th>
+      <th><i class= "icon-briefcase"></i> Backlog</th>
+      <th><i class= "icon-download-alt"></i> Icebox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        <table class="table">
+          <% @stories.each do |story| %>
+            <% if story.state == "finished" %>
+              <tr><th>
+                <%= story.description %>
+              </th></tr>
+            <% end %>
+          <% end %>
+        </table>                                         
+      </th>
+      <th>
+        <table class="table">
+          <% @stories.each do |story| %>
+            <% if story.state == "started" %>
+              <tr><th>
+                <%= story.description %>
+              </th></tr>
+            <% end %>
+          <% end %>
+        </table>
+      </th>
+      <th>
+        <table class="table">
+          <% @stories.each do |story| %>
+            <% if story.state == "rejected" %>
+              <tr><th>
+                <%= story.description %>
+              </th></tr>
+            <% end %>
+          <% end %>
+        </table>
+      </th>
+      <th>
+        <table class="table">
+          <% @stories.each do |story| %> 
+            <% if story.state == "not_yet_started" %>
+              <tr><th>
+                  <%= story.description %>
+              </th></tr>    
+            <% end %>  
+          <% end %>
+        </table>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
