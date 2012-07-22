@@ -4,7 +4,7 @@
   <%= render 'layouts/error_messages', :object => f.object %>
   <div class="field">
     <%= f.label :story_type %>
-    <%= f.text_field :story_type %>
+    <%= f.select :story_type, [['Bug', 'bug'], ['Chore', 'chore'], ['Feature', 'feature'], ['Release','release']] %>
   </div>
   <div class="field">
     <%= f.label :description %>
