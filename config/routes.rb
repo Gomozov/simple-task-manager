@@ -7,6 +7,8 @@ SimpleTaskManager::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  match '/story_change_state', :to => 'stories#change_state'
+
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'

@@ -22,6 +22,7 @@
       <tr>
         <th><i class= "icon-folder-open"></i> Project</th>         
         <th><i class= "icon-info-sign"></i> Description</th>
+        <th><i class= "icon-lock"></i> Privacy</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
       <tr>
         <th><%= link_to project.title, project %></th>
         <th><%= project.description %></th>
+        <th><%= project.public %></th>
         <% if project.user_id == current_user.id %>
           <th><%= link_to "edit", edit_project_path(project), :class => 'btn btn-mini' %>
           <%= link_to "delete", project, :method => :delete, :confirm => "You sure?",

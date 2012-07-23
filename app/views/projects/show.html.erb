@@ -43,7 +43,19 @@
                     <%= story.description %><br>
                     <span class="muted">Author:<%= story.user.name %></span>
                   </td>
-                  <td><span class="label label-success"><%= story.state %></span></td>
+                  <td>
+                    <span class="label label-success"><%= story.state %></span><br><br>
+                    <% if story.state == "started" %>
+                      <%= link_to "deliver", story_change_state_path(:id => story.id, :new_state => :deliver), :class => 'btn btn-mini btn-primary pull-right' %>                                                                        
+                    <% end %>
+                    <% if story.state == "accepted" %>
+                      <%= link_to "finish", story_change_state_path(:id => story.id, :new_state => :finish), :class => 'btn btn-mini btn-primary pull-right' %>                                                                       
+                    <% end %>
+                    <% if story.state == "delivered" %>
+                      <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary" %>
+                      <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger" %>                                                          
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             <% end %>
@@ -64,7 +76,10 @@
                     <%= story.description %><br>
                     <span class="muted">Author:<%= story.user.name %></span>
                   </td>
-                  <td><span class="label label-info"><%= story.state %></span></td>
+                  <td>
+                    <span class="label label-important"><%= story.state %></span><br><br>
+                    <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>                                                                        
+                  </td>
                 </tr>
               <% end %>
             <% end %>
@@ -86,8 +101,8 @@
                     <span class="muted">Author:<%= story.user.name %></span>
                   </td>
                   <td>
-                    <span class="label label-important"><%= story.state %></span><br><br>
-                    <%= link_to "start", story_path(story, :event => :start), :method => :put, :class => 'btn btn-mini btn-primary pull-right' %>  
+                    <span class="label label-info"><%= story.state %></span><br><br>
+                    <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary pull-right' %>  
                   </td>
                 </tr>    
               <% end %>  

@@ -4,6 +4,8 @@ class Story < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
+  validates :description, :presence => true, :length => { :maximum => 80 }
+
   state_machine :state, :initial => :not_yet_started do
     event :start do
       transition :not_yet_started => :started
