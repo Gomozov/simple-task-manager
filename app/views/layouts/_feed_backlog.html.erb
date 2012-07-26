@@ -1,0 +1,22 @@
+<table class="table">                                                                                 
+  <thead>                                                                                             
+    <tr><th><i class= "icon-briefcase"></i> Backlog</th></tr>                                         
+  </thead>                                                                                            
+  <tbody>                                                                              
+    <% @stories.each do |story| %>                                                                    
+    <% if story.state == "rejected" %>                                                              
+      <tr>
+        <td>
+          <%= image_tag(story.story_type + '.png', :border => 0) %>                                 
+          <%= story.description %><br>                                                              
+          <span class="muted">Author:<%= story.user.name %></span>                                  
+        </td>                                                                                       
+        <td>                                                                                        
+          <span class="label label-important pull-right"><%= story.state %></span><br>              
+          <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>                                                           
+        </td>                                                                                       
+      </tr>                                                                                         
+    <% end %>                                                                                       
+    <% end %>                                                                                         
+  </tbody>                                                                                            
+</table>

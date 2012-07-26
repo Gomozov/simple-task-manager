@@ -1,0 +1,19 @@
+<table class="table">                                                      
+  <thead>                                                                  
+    <tr><th><i class= "icon-ok"></i> Done</th></tr>                        
+  </thead>                                                                 
+  <tbody>                                                                  
+    <% @stories.each do |story| %>                                         
+      <% if story.state == "finished" %>                                   
+        <tr>                                                               
+          <td>                                                             
+            <%= image_tag(story.story_type + '.png', :border => 0) %>      
+            <%= story.description %><br>                                   
+            <span class="muted">Author:<%= story.user.name %></span>       
+          </td>                                                            
+          <td><span class="label pull-right"><%= story.state %></span></td>
+        </tr>                                                              
+      <% end %>                                                            
+    <% end %>                                                              
+  </tbody>                                                                 
+</table>

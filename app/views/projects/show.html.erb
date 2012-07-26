@@ -9,106 +9,15 @@
 </div>
 <div class="row">
   <div class="span3">
-        <table class="table">
-          <thead>
-            <tr><th><i class= "icon-ok"></i> Done</th></tr>
-          </thead>
-          <tbody>
-            <% @stories.each do |story| %>
-              <% if story.state == "finished" %>
-                <tr>
-                  <td>
-                    <%= image_tag(story.story_type + '.png', :border => 0) %>
-                    <%= story.description %><br>
-                    <span class="muted">Author:<%= story.user.name %></span>
-                  </td>
-                  <td><span class="label pull-right"><%= story.state %></span></td>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>     
+    <%= render 'layouts/feed_done' %>
   </div>
   <div class="span3">
-        <table class="table">
-          <thead>
-            <tr><th><i class= "icon-edit"></i> Current</th></tr>
-          </thead>
-          <tbody>
-            <% @stories.each do |story| %>
-              <% if story.state == "started" || story.state == "delivered" || story.state == "accepted" %>
-                <tr>
-                  <td>
-                    <%= image_tag(story.story_type + '.png', :border => 0) %>
-                    <%= story.description %><br>
-                    <span class="muted">Author:<%= story.user.name %></span>
-                  </td>
-                  <td>
-                    <span class="label label-success pull-right"><%= story.state %></span><br>
-                    <% if story.state == "started" %>
-                      <%= link_to "deliver", story_change_state_path(:id => story.id, :new_state => :deliver), :class => 'btn btn-mini btn-primary pull-right' %>                                                                        
-                    <% end %>
-                    <% if story.state == "accepted" %>
-                      <%= link_to "finish", story_change_state_path(:id => story.id, :new_state => :finish), :class => 'btn btn-mini btn-primary pull-right' %>                                                                       
-                    <% end %>
-                    <% if story.state == "delivered" %>
-                      <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary pull-right" %>
-                      <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger pull-right" %>                                                          
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
+    <%= render 'layouts/feed_current' %>
   </div>
   <div class="span3">
-        <table class="table">
-          <thead>
-            <tr><th><i class= "icon-briefcase"></i> Backlog</th></tr>
-          </thead>
-          <tbody>
-            <% @stories.each do |story| %>
-              <% if story.state == "rejected" %>
-                <tr>
-                  <td>
-                    <%= image_tag(story.story_type + '.png', :border => 0) %>
-                    <%= story.description %><br>
-                    <span class="muted">Author:<%= story.user.name %></span>
-                  </td>
-                  <td>
-                    <span class="label label-important pull-right"><%= story.state %></span><br>
-                    <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>                                                                        
-                  </td>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
+    <%= render 'layouts/feed_backlog' %>
   </div>
   <div class="span3">
-        <table class="table">
-          <thead>
-            <tr><th><i class= "icon-download-alt"></i> Icebox</th></tr>
-          </thead>
-          <tbody>
-            <% @stories.each do |story| %> 
-              <% if story.state == "not_yet_started" %>
-                <tr>
-                  <td>
-                    <%= image_tag(story.story_type + '.png', :border => 0) %>
-                    <%= story.description %><br>
-                    <span class="muted">Author:<%= story.user.name %></span>
-                  </td>
-                  <td>
-                    <span class="label label-info pull-right"><%= story.state %></span><br>
-                    <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary pull-right' %>  
-                  </td>
-                </tr>    
-              <% end %>  
-            <% end %>
-          </tbody>  
-        </table>
-  </div>      
+    <%= render 'layouts/feed_icebox' %>
+  </div>
 </div>
-
