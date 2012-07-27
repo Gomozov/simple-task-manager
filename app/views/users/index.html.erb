@@ -18,7 +18,7 @@
        <th><%= user.id %></th>
        <th><%= link_to user.name, user %></th>
        <th><%= user.email %></th>
-       <% if current_user.admin? %>
+       <% if current_user.admin? && user !=current_user %>
          <th><%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
                                          :title => "Delete #{user.name}" %></th>
        <% end %>
