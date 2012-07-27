@@ -3,8 +3,7 @@
     <tr><th><i class= "icon-edit"></i> Current</th></tr>                                                 
   </thead>                                                                                               
   <tbody>                                                                                                
-    <% @stories.each do |story| %>                                                                       
-    <% if story.state == "started" || story.state == "delivered" || story.state == "accepted" %>       
+    <% @stories_current.each do |story| %>                                                                       
       <tr>                                                                                             
         <td style="width: 60%">                                                                        
           <%= image_tag(story.story_type + '.png', :border => 0) %>                                    
@@ -24,8 +23,7 @@
             <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger" %>                                                                         
           <% end %>                                                                                    
         </td>                                                                                          
-      </tr>                                                                                            
-    <% end %>                                                                                          
+      </tr>
     <% end %>                                                                                            
   </tbody>                                                                                               
 </table>

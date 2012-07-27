@@ -1,0 +1,18 @@
+<table class="table">
+  <tr>
+    <th><i class= "icon-user"></i><strong> Name:</strong></th>
+    <th><%= @user.name %></th>
+  </tr>
+  <tr>
+    <th><i class= "icon-search"></i><strong> URL:</strong></th>
+    <th><%= link_to user_path(@user), @user %></th>
+  </tr>
+  <tr>
+    <th><i class= "icon-folder-open"></i><strong> Projects:</strong></th>
+    <th><%= @user.projects.count %></th>
+  </tr>
+  <tr>
+    <th><i class= "icon-star"></i><strong> Stories:</strong></th>
+    <th><%= @user.stories.count %></th>
+  </tr>
+</table>

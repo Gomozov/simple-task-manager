@@ -8,16 +8,24 @@
   </div>
 </div>
 <div class="row">
-  <div class="span3">
-    <%= render 'layouts/feed_done' %>
-  </div>
-  <div class="span3">
-    <%= render 'layouts/feed_current' %>
-  </div>
-  <div class="span3">
-    <%= render 'layouts/feed_backlog' %>
-  </div>
-  <div class="span3">
-    <%= render 'layouts/feed_icebox' %>
-  </div>
+  <% unless @stories_done.empty? %>
+    <div class="span3">
+      <%= render 'layouts/feed_done' %>
+    </div>
+  <% end %>
+  <% unless @stories_current.empty? %>
+    <div class="span3">
+      <%= render 'layouts/feed_current' %>
+    </div>
+  <% end %>
+  <% unless @stories_backlog.empty? %>
+    <div class="span3">
+      <%= render 'layouts/feed_backlog' %>
+    </div>
+  <% end %>
+  <% unless @stories_icebox.empty? %>
+    <div class="span3">
+      <%= render 'layouts/feed_icebox' %>
+    </div>
+  <% end %>
 </div>

@@ -3,8 +3,7 @@
     <tr><th><i class= "icon-ok"></i> Done</th></tr>                        
   </thead>                                                                 
   <tbody>                                                                  
-    <% @stories.each do |story| %>                                         
-      <% if story.state == "finished" %>                                   
+    <% @stories_done.each do |story| %>                                                                            
         <tr>                                                               
           <td>                                                             
             <%= image_tag(story.story_type + '.png', :border => 0) %>      
@@ -12,8 +11,7 @@
             <span class="muted">Author:<%= story.user.name %></span>       
           </td>                                                            
           <td><span class="label pull-right"><%= story.state %></span></td>
-        </tr>                                                              
-      <% end %>                                                            
-    <% end %>                                                              
+        </tr>
+    <% end %>   
   </tbody>                                                                 
 </table>
