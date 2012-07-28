@@ -3,9 +3,11 @@
     <h2><%= @project.title %></h2>
     <%= @project.description %>
   </div>
-  <div class="span2 offset6">
-    <%= link_to "ADD STORY", new_story_path(:project_id => @project.id), :class => 'btn btn-primary' %>
-  </div>
+  <% if (@project.member?(current_user)) || @project.user == current_user %>
+    <div class="span2 offset6">
+      <%= link_to "ADD STORY", new_story_path(:project_id => @project.id), :class => 'btn btn-primary' %>
+    </div>
+  <% end %>  
 </div>
 <div class="row">
   <% unless @stories_done.empty? %>
