@@ -1,0 +1,30 @@
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th><i class= "icon-list-alt"></i></th>
+    <th><i class= "icon-user"></i> Username</th>
+    <th><i class= "icon-envelope"></i> Email adress</th>
+    <th><i class= "icon-trash"></i> Remove</th>  
+  </tr>
+</thead>
+<tbody> 
+  <% @members.each do |member| %>
+  <tr>
+    <th><%= member.id %></th>
+    <th><%= link_to member.name, member %></th>
+    <th><%= member.email %></th>
+    <th><%= form_for @project.relationships.find_by_member_id(member.id), :html => {:method => :delete} do |f| %>
+        <div><%= f.hidden_field :work_id, :value => @project.id %></div>
+        <div class="actions"><%= f.submit "REMOVE MEMBER", :class => "btn btn-danger btn-mini" %></div>
+        <% end %></th>
+  </tr> 
+  <% end %>
+</tbody>
+</table>
+
+<%= form_for @project.relationships.build() do |f| %>
+  <div><%= f.label "Please insert user id:" %>
+       <%= f.text_field :member_id %></div>
+  <div><%= f.hidden_field :work_id, :value => @project.id %></div>
+  <div class="actions"><%= f.submit "ADD MEMBER", :class => "btn btn-primary" %></div>
+<% end %>

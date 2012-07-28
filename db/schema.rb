@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716174508) do
+ActiveRecord::Schema.define(:version => 20120727192641) do
 
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20120716174508) do
     t.datetime "updated_at",  :null => false
     t.boolean  "public"
   end
+
+  create_table "relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "member_id"
+    t.integer  "work_id"
+  end
+
+  add_index "relationships", ["member_id"], :name => "index_relationships_on_member_id"
+  add_index "relationships", ["work_id", "member_id"], :name => "index_relationships_on_work_id_and_member_id", :unique => true
+  add_index "relationships", ["work_id"], :name => "index_relationships_on_work_id"
 
   create_table "stories", :force => true do |t|
     t.integer  "user_id"

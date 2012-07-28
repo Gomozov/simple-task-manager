@@ -4,6 +4,7 @@ SimpleTaskManager::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :projects
   resources :stories
+  resources :relationships, :only => [:create, :destroy]
 
   root :to => 'pages#home'
 
@@ -16,5 +17,17 @@ SimpleTaskManager::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+
+  resources :projects do
+    member do
+      get :members
+    end
+  end
+
+  resources :users do
+    member do
+      get :works
+    end
+  end
 
 end

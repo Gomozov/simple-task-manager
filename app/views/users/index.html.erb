@@ -1,5 +1,4 @@
 <h2>List of users</h2>
-  
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,7 +11,6 @@
     </tr>
   </thead>
   <tbody>  
-
   <% @users.each do |user| %>
     <tr>
        <th><%= user.id %></th>
@@ -25,7 +23,5 @@
     </tr>
   <% end %>
   <%= will_paginate @users, :param_name => 'user_page', :renderer => BootstrapPagination::Rails%>
-
   </tbody>
 </table>
- 

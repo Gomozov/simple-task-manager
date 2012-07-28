@@ -1,7 +1,13 @@
 class ProjectsController < ApplicationController
 
 before_filter :login_required
-before_filter :authorized_user, :only => [:edit, :update, :destroy]
+before_filter :authorized_user, :only => [:edit, :update, :destroy, :members]
+
+def members
+  @project = Project.find(params[:id])
+  @members = @project.members
+  @title = "Members"
+end
 
 def new
   @project = Project.new

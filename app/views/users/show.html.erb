@@ -9,17 +9,21 @@
       <tr>
         <th><i class= "icon-folder-open"></i> Project</th>         
         <th><i class= "icon-info-sign"></i> Description</th>
-        <th><i class= "icon-lock"></i> Privacy</th>
+        <% if @user.id == current_user.id %>
+          <th><i class= "icon-lock"></i> Privacy</th>
+          <th><i class= "icon-eye-open"></i> Members</th>
+        <% end %>  
       </tr>
     </thead>
     <tbody>
     <% @projects.each do |project| %>
-      <% if project.public || project.user_id == current_user.id %>
+      <% if project.public || project.member?(current_user) || (project.user_id == current_user.id) %>
       <tr>
         <th><%= link_to project.title, project %></th>
         <th><%= project.description %></th>
-        <th><%= project.public %></th>
         <% if project.user_id == current_user.id %>
+          <th><%= project.public %></th>
+          <th><%= link_to project.members.count, members_project_path(project) %></th>
           <th><%= link_to "edit", edit_project_path(project), :class => 'btn btn-mini' %>
           <%= link_to "delete", project, :method => :delete, :confirm => "You sure?",
             :title => "Delete #{project.title}", :class => 'btn btn-mini btn-danger' %></th>
