@@ -1,12 +1,13 @@
-<div class="pull-right">
-  <%= render 'layouts/user_info' %> 
-</div> 
-
-<div class="pull-left">
-  <%= render 'layouts/feed_projects' %>
-  <% if @user == current_user %>
-    <%= link_to (new_project_path), :class => 'btn btn-primary' do %>
-      ADD PROJECT
+<div class="row">
+  <div class="span9">
+    <%= render 'layouts/feed_projects' %>
+    <% if @user == current_user %>
+      <%= link_to (new_project_path), :class => 'btn btn-primary' do %>
+        ADD PROJECT
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div class="span3">
+    <%= render 'layouts/user_info' %>
+  </div>
 </div>

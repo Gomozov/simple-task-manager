@@ -2,8 +2,8 @@
   <table class="table">                                                                             
     <thead>                                                                                           
       <tr>                                                                                            
-        <th><i class= "icon-folder-open"></i> Project</th>                                            
-        <th><i class= "icon-info-sign"></i> Description</th>                                          
+        <th style="width: 20%"><i class= "icon-folder-open"></i> Project</th>
+        <th style="width: 40%"><i class= "icon-info-sign"></i> Description</th>
         <% if @user.id == current_user.id %>                                                          
           <th><i class= "icon-lock"></i> Privacy</th>                                                 
           <th><i class= "icon-eye-open"></i> Members</th>                                             
@@ -15,9 +15,9 @@
         <% if project.public || project.member?(current_user) || (project.user_id == current_user.id) %>
           <tr>                                                                                            
             <th><%= link_to project.title, project %></th>                                                
-            <th><%= project.description %></th>                                                           
+            <td><%= project.description %></td>                                                           
             <% if project.user_id == current_user.id %>                                                   
-              <th><%= project.public %></th>                                                              
+              <td><%= project.public %></td>                                                              
               <th><%= link_to project.members.count, members_project_path(project) %></th>                
               <th><%= link_to "edit", edit_project_path(project), :class => 'btn btn-mini' %>             
                   <%= link_to "delete", project, :method => :delete, :confirm => "You sure?",                 
@@ -25,7 +25,22 @@
             <% end %>                                                                                     
           </tr>
         <% end %>                                                                                       
-      <% end %>                                                                                         
+      <% end %>
+      <% unless @user.works.empty? %>
+        <tr>
+          <th colspan="4">Ather projects</th>
+          <th><i class= "icon-user"></i> Owner</th>
+        </tr>
+        <% @user.works.each do |work| %>
+          <tr>
+            <th><%= link_to work.title, work %></th>
+            <td><%= work.description %></td>
+            <td></td>
+            <td></td>
+            <th><%= work.user.name %></th>
+          </tr>  
+        <% end %>  
+      <% end %>  
     </tbody>                                                                                          
   </table>                                                                                          
 <% end %>                                                                                           

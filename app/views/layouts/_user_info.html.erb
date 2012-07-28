@@ -8,8 +8,12 @@
     <th><%= link_to user_path(@user), @user %></th>
   </tr>
   <tr>
-    <th><i class= "icon-folder-open"></i><strong> Projects:</strong></th>
+    <th><i class= "icon-folder-open"></i><strong> Projects owner:</strong></th>
     <th><%= @user.projects.count %></th>
+  </tr>
+  <tr>
+    <th><i class= "icon-eye-open"></i><strong> Projects member:</strong></th>
+    <th><%= @user.works.count %></th>
   </tr>
   <tr>
     <th><i class= "icon-star"></i><strong> Stories:</strong></th>
