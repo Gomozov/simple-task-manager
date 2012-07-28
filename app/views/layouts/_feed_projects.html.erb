@@ -2,7 +2,7 @@
   <table class="table">                                                                             
     <thead>                                                                                           
       <tr>                                                                                            
-        <th style="width: 20%"><i class= "icon-folder-open"></i> Project</th>
+        <th style="width: 20%"><i class= "icon-folder-open"></i> My projects</th>
         <th style="width: 40%"><i class= "icon-info-sign"></i> Description</th>
         <% if @user.id == current_user.id %>                                                          
           <th><i class= "icon-lock"></i> Privacy</th>                                                 
@@ -28,8 +28,9 @@
       <% end %>
       <% unless @user.works.empty? %>
         <tr>
-          <th colspan="4">Ather projects</th>
-          <th><i class= "icon-user"></i> Owner</th>
+          <th><br><br><i class= "icon-eye-open"></i> Projects member</th>
+          <th colspan="3"><br><br><i class= "icon-info-sign"></i> Description</th>
+          <th><br><br><i class= "icon-user"></i> Owner</th>
         </tr>
         <% @user.works.each do |work| %>
           <tr>
@@ -37,7 +38,7 @@
             <td><%= work.description %></td>
             <td></td>
             <td></td>
-            <th><%= work.user.name %></th>
+            <th><%= link_to work.user.name, work.user %></th>
           </tr>  
         <% end %>  
       <% end %>  
