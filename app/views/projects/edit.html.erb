@@ -10,6 +10,11 @@
     <%= f.label :description %>
     <%= f.text_area :description, :rows => "3" %>
   </div>
+  <div>
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+  <br>    
   <div class="actions">
     <%= f.submit "Update", :class => 'btn btn-primary' %>
   </div>
