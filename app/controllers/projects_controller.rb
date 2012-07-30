@@ -11,7 +11,7 @@ end
 
 def new
   @project = Project.new
-  @title = "Sign up"
+  @title = "New project"
 end   
 
 
@@ -41,7 +41,7 @@ def update
   @project = Project.find(params[:id])           
   if @project.update_attributes(params[:project])
     flash[:success] = "Project updated."   
-    redirect_to @project                     
+    redirect_to @project.user                     
   else                                     
     @title = "Edit project"                   
     render 'edit'

@@ -1,0 +1,13 @@
+<h2>Create comment</h2>
+
+<%= form_for (@comment) do |f| %>
+  <%= render 'layouts/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, :rows =>"3" %>
+  </div>
+  <%= f.hidden_field :story_id, :value => params[:story_id] %>
+  <div class="actions">
+    <%= f.submit "Submit", :class => 'btn btn-primary' %>
+  </div>
+<% end %>

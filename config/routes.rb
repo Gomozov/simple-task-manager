@@ -4,6 +4,7 @@ SimpleTaskManager::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :projects
   resources :stories
+  resources :comments, :only => [:new, :create]
   resources :relationships, :only => [:create, :destroy]
 
   root :to => 'pages#home'

@@ -10,7 +10,10 @@
             <%= story.description %><br>                                   
             <span class="muted">Author:<%= story.user.name %></span>       
           </td>                                                            
-          <td><span class="label pull-right"><%= story.state %></span></td>
+          <td><span class="label pull-right"><%= story.state %></span><br>
+            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-right' do %>
+                <i class= "icon-pencil"></i> + <%= story.comments.count %>
+              <% end %></td>
         </tr>
     <% end %>   
   </tbody>                                                                 

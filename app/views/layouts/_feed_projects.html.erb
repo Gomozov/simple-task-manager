@@ -33,13 +33,15 @@
           <th><br><br><i class= "icon-user"></i> Owner</th>
         </tr>
         <% @user.works.each do |work| %>
+          <% if work.public || work.member?(current_user) %>
           <tr>
             <th><%= link_to work.title, work %></th>
             <td><%= work.description %></td>
             <td></td>
             <td></td>
             <th><%= link_to work.user.name, work.user %></th>
-          </tr>  
+          </tr> 
+        <% end %>
         <% end %>  
       <% end %>  
     </tbody>                                                                                          
