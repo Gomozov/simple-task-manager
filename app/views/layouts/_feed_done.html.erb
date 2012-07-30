@@ -6,14 +6,14 @@
     <% @stories_done.each do |story| %>                                                                            
         <tr>                                                               
           <td>                                                             
-            <%= image_tag(story.story_type + '.png', :border => 0) %>      
+            <%= image_tag(story.story_type + '.png', :border => 0) %>
+             <span class="label pull-right"><%= story.state %></span>
             <%= story.description %><br>                                   
-            <span class="muted">Author:<%= story.user.name %></span>       
+            <span class="muted">Author:<%= story.user.name %></span><br>
+            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left' do %>
+                  <i class= "icon-pencil"></i> + <%= story.comments.count %>                                
+            <% end %>
           </td>                                                            
-          <td><span class="label pull-right"><%= story.state %></span><br>
-            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-right' do %>
-                <i class= "icon-pencil"></i> + <%= story.comments.count %>
-              <% end %></td>
         </tr>
     <% end %>   
   </tbody>                                                                 

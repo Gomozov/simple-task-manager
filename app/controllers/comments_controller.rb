@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
 def new
     @comment = Comment.new
+    @story = Story.find(params[:story_id])
 end
 
 

@@ -1,9 +1,15 @@
-<h2>Create comment</h2>
-
+<table class="table">
+  <% @story.comments.each do |story_comment| %>
+    <tr><td>  
+     <p><%= story_comment.comment %></p>
+     <span class="muted"><i class="icon-user"></i> <%= story_comment.user.name %></span>
+    </td></tr> 
+<% end %>
+</table>
 <%= form_for (@comment) do |f| %>
   <%= render 'layouts/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :comment %>
+    <%= f.label "Leave comment" %>
     <%= f.text_area :comment, :rows =>"3" %>
   </div>
   <%= f.hidden_field :story_id, :value => params[:story_id] %>

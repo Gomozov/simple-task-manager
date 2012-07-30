@@ -7,13 +7,14 @@
       <tr>
         <td>
           <%= image_tag(story.story_type + '.png', :border => 0) %>                                 
+          <span class="label label-important pull-right"><%= story.state %></span>
           <%= story.description %><br>                                                         
-          <span class="muted">Author:<%= story.user.name %></span>                                  
-        </td>                                                                                       
-        <td>                                                                                        
-          <span class="label label-important pull-right"><%= story.state %></span><br>              
-          <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>                                                           
-        </td>                                                                                       
+          <span class="muted">Author:<%= story.user.name %></span><br>
+          <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left' do %>
+            <i class= "icon-pencil"></i> + <%= story.comments.count %>                            
+          <% end %>
+          <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>
+        </td>
       </tr>
     <% end %>                                                                                         
   </tbody>                                                                                            

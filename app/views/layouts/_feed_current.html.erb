@@ -7,11 +7,12 @@
       <tr>                                                                                             
         <td style="width: 60%">                                                                        
           <%= image_tag(story.story_type + '.png', :border => 0) %>                                    
+          <span class="label label-success pull-right"><%= story.state %></span>
           <%= story.description %><br>                                                                 
-          <span class="muted">Author:<%= story.user.name %></span>                                     
-        </td>                                                                                          
-        <td style ="width: 40%">                                                                       
-          <span class="label label-success pull-right"><%= story.state %></span><br>                   
+          <span class="muted">Author:<%= story.user.name %></span><br>
+          <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left' do %>
+            <i class= "icon-pencil"></i> + <%= story.comments.count %>
+          <% end %>
           <% if story.state == "started" %>                                                            
             <%= link_to "deliver", story_change_state_path(:id => story.id, :new_state => :deliver), :class => 'btn btn-mini btn-primary pull-right' %>                                                             
           <% end %>                                                                                    
@@ -19,8 +20,8 @@
             <%= link_to "finish", story_change_state_path(:id => story.id, :new_state => :finish), :class => 'btn btn-mini btn-primary pull-right' %>                                                             
           <% end %>                                                                                    
           <% if story.state == "delivered" %>                                                          
-            <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary" %>                                                                        
-            <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger" %>                                                                         
+            <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary pull-right" %>                                                                        
+            <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger pull-right" %>                                                                         
           <% end %>                                                                                    
         </td>                                                                                          
       </tr>
