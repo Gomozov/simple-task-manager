@@ -10,8 +10,11 @@
           <span class="label label-important pull-right"><%= story.state %></span>
           <%= story.description %><br>                                                         
           <span class="muted">Author:<%= story.user.name %></span><br>
+          <% if story.responsible %>
+            <span class="muted">Responsible:<%= story.get_responsible.name %></span><br>
+          <% end %>
           <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left' do %>
-            <i class= "icon-pencil"></i> + <%= story.comments.count %>                            
+            <i class= "icon-comment"></i> + <%= story.comments.count %>                            
           <% end %>
           <%= link_to "restart", story_change_state_path(:id => story.id, :new_state => :restart), :class => 'btn btn-mini btn-primary pull-right'%>
         </td>

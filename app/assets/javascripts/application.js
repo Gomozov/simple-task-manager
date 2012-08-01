@@ -19,4 +19,5 @@ $(document).ready(function() {
     $(".mdl").click(function() {
         $('#myModal').modal('show')
     })
+    $('.dropdown-toggle').dropdown()
 });

@@ -21,4 +21,9 @@ class Project < ActiveRecord::Base
   def unmember! (member)
     relationships.find_by_member_id(member).destroy
   end
+
+  def user_responsible (user)
+    Story.find(:all, :conditions => {:project_id => self.id, :responsible => user.id})
+  end
+
 end

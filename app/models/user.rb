@@ -16,4 +16,9 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "member_id", :class_name => "Relationship", :dependent => :destroy
   has_many :works, :through => :reverse_relationships, :source => :work
   has_many :comments
+
+  def get_responsibles
+    Story.find_all_by_responsible(self.id)
+  end
+  
 end

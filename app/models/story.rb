@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  attr_accessible :description, :story_type, :project_id
+  attr_accessible :description, :story_type, :project_id, :responsible
 
   belongs_to :project
   belongs_to :user
@@ -32,5 +32,9 @@ class Story < ActiveRecord::Base
       transition :rejected => :started
     end
   end
+
+def get_responsible
+    User.find_by_id(self.responsible)
+end
 
 end

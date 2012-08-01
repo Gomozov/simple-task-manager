@@ -20,7 +20,11 @@
     <th><%= @user.stories.count %></th>
   </tr>
   <tr>
-    <th><i class= "icon-pencil"></i><strong> Comments:</strong></th>
+    <th><i class= "icon-comment"></i><strong> Comments:</strong></th>
     <th><%= @user.comments.count %></th>
+  </tr>
+  <tr>
+    <th><i class="icon-briefcase"></i><strong> Responsible:</strong></th>
+    <th><%= @user.get_responsibles.count %></th>
   </tr>
 </table>

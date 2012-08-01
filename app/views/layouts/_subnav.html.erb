@@ -1,0 +1,20 @@
+<div class="subnav">
+  <ul class="nav nav-pills">
+    <% if (@project.member?(current_user)) || @project.user == current_user %>
+      <li><%= link_to new_story_path(:project_id => @project.id) do %>
+            <i class= "icon-star"></i> Add story
+          <% end %></li>
+    <% end %>
+    <% if @project.user == current_user %>
+      <li><%= link_to members_project_path(@project) do %>
+            <i class= "icon-eye-open"></i> Members
+          <% end %></li>
+      <li><%= link_to edit_project_path(@project) do %>
+            <i class="icon-pencil"></i> Edit
+          <% end %></li>
+      <li><%= link_to @project, :method => :delete, :confirm => "You sure?", :title => "Delete #{@project.title}" do %>
+            <i class="icon-trash"></i> Delete
+          <% end %></li>
+    <% end %>
+  </ul>
+</div>
