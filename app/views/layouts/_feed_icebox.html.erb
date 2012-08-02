@@ -5,7 +5,7 @@
   <tbody>                                                                                                  
     <% @stories_icebox.each do |story| %>                                                            
       <tr>                                                                                               
-        <td>                                                                                             
+        <td>      
           <%= image_tag(story.story_type + '.png', :border => 0) %>                                      
           <span class="label label-info pull-right"><%= story.state %></span>
           <%= story.description %><br>                                                                   
