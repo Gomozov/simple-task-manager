@@ -14,6 +14,7 @@ gem 'faker', '~> 1.0.1'
 gem 'will_paginate', '~>3.0.3'
 gem 'will_paginate-bootstrap'
 gem 'state_machine'
+gem 'activerecord-postgresql-adapter'
 
 # Gems used only for assets and not required
 # in production environments by default.
