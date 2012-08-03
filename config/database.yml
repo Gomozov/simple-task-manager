@@ -28,11 +28,11 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  #adapter: postgresql
-  #encoding: unicode
-  database: db/production.sqlite3
-  #username: tulp
-  pool: 5
-  #password: 
-  timeout: 5000
+  #adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: db/production
+  username: tulp
+  #pool: 5
+  password: tulp
+  #timeout: 5000
