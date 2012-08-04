@@ -16,11 +16,24 @@ namespace :db do
                    :password_confirmation => password)
     end
 
-    User.all(:limit => 20).each do |user|
+    User.all.each do |user|
       5.times do
         user.projects.create!(:title => Faker::Company.catch_phrase, :description => Faker::Lorem.sentence(5),
                               :public => true)
       end
+    end
+ 
+    story_types = ["bug", "release", "feature", "chore"]
+    User.all.each do |user|
+      user.projects.each do |project|
+        3.times do
+          user.stories.create!(:description => Faker::Company.catch_phrase, :project_id => project.id, :responsible => user.id, :story_type => story_types[rand(story_types.size)])
+        end
+      end
+    end
+
+    Story.all.each do |story|
+      story.comments.create!(:comment => Faker::Lorem.sentence(5), :user_id => story.user.id)
     end
 
   end

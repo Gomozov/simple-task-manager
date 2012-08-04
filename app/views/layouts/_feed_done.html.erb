@@ -6,7 +6,7 @@
     <% @stories_done.each do |story| %>                                                                            
         <tr>                                                               
           <td>
-            <%= image_tag(story.story_type + '.png', :border => 0) %>
+            <%= image_tag(story.story_type + '.png', :border => 0, :style => "float: left") %>
             <span class="label pull-right"><%= story.state %></span>
             <%= story.description %><br>                       
             <span class="muted">Author:<%= story.user.name %></span><br>

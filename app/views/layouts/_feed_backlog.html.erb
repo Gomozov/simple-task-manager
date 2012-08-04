@@ -6,7 +6,7 @@
     <% @stories_backlog.each do |story| %>
       <tr>
         <td>
-          <%= image_tag(story.story_type + '.png', :border => 0) %>                                 
+          <%= image_tag(story.story_type + '.png', :border => 0, :style => "float: left") %>
           <span class="label label-important pull-right"><%= story.state %></span>
           <%= story.description %><br>                                                         
           <span class="muted">Author:<%= story.user.name %></span><br>
