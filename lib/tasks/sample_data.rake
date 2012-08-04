@@ -6,9 +6,9 @@ namespace :db do
                  :email => "admin@example.org",
                  :password => "nimda",
                  :password_confirmation => "nimda")
-    99.times do |n|
+    49.times do |n|
       name  = Faker::Name.name
-      email = "example-#{n+1}@example.org"
+      email = "testuser#{n+1}@example.org"
       password  = "password"
       User.create!(:name => name,
                    :email => email,
@@ -16,9 +16,9 @@ namespace :db do
                    :password_confirmation => password)
     end
 
-    User.all(:limit => 6).each do |user|
+    User.all(:limit => 20).each do |user|
       5.times do
-        user.projects.create!(:title => Faker::Lorem.sentence(1), :description => Faker::Lorem.sentence(5),
+        user.projects.create!(:title => Faker::Company.catch_phrase, :description => Faker::Lorem.sentence(5),
                               :public => true)
       end
     end
