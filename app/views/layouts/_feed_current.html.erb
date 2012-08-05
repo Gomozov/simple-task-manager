@@ -17,14 +17,14 @@
             <i class= "icon-comment"></i> + <%= story.comments.count %>
           <% end %>
           <% if story.state == "started" %>                                                            
-            <%= link_to "deliver", story_change_state_path(:id => story.id, :new_state => :deliver), :class => 'btn btn-mini btn-primary pull-right' %>                                                             
+            <%= link_to "deliver", story_change_state_path(:id => story.id, :new_state => :deliver), :class => 'btn btn-mini btn-primary pull-right', :disable_with => "wait" %>
           <% end %>                                                                                    
           <% if story.state == "accepted" %>                                                           
-            <%= link_to "finish", story_change_state_path(:id => story.id, :new_state => :finish), :class => 'btn btn-mini btn-primary pull-right' %>                                                             
+            <%= link_to "finish", story_change_state_path(:id => story.id, :new_state => :finish), :class => 'btn btn-mini btn-primary pull-right', :disable_with => "wait" %>
           <% end %>                                                                                    
           <% if story.state == "delivered" %>                                                          
-            <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary pull-right", :style => "margin-left: 2px"  %>
-            <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger pull-right" %>                                                                         
+            <%= link_to "accept", story_change_state_path(:id => story.id, :new_state => :accept), :class => "btn btn-mini btn-primary pull-right", :style => "margin-left: 2px", :disable_with => "wait" %>
+            <%= link_to "reject", story_change_state_path(:id => story.id, :new_state => :reject), :class => "btn btn-mini btn-danger pull-right", :disable_with => "wait" %>
           <% end %>                                                                                    
         </td>                                                                                          
       </tr>

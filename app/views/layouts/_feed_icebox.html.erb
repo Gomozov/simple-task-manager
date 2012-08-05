@@ -17,7 +17,7 @@
             <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left', :style => "margin-right: 3px" do %>
               <i class= "icon-comment"></i> + <%= story.comments.count %>
             <% end %>
-            <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary pull-right' %>
+            <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary pull-right', :disable_with => "wait"%>
             <div class="btn-group">
               <%= link_to "#", :class => "btn btn-mini dropdown-toggle", :data => {:toggle => "dropdown"} do %>
                 <i class="icon-user"></i>

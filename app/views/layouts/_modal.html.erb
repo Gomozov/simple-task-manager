@@ -1,12 +1,10 @@
-<!-- sample modal content -->
 <div id="myModal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
     <h3>Create project</h3>
   </div>
   <div class="modal-body">
-     <%= form_for (@project) do |f| %>
-       <%= render 'layouts/error_messages', :object => f.object %>
+     <%= form_for Project.new do |f| %>
        <div class="field">
          <%= f.label :title %>
          <%= f.text_field :title %>
@@ -19,14 +17,13 @@
          <%= f.label :public %>
          <%= f.check_box :public %>
        </div>
-       <br>
-       <div class="actions">
-         <%= f.submit "Submit", :class => 'btn btn-primary' %>
-       </div>
-     <% end %>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn btn-primary">CREATE</a>
+    <div class="actions">
+        <a href="#" class="btn" data-dismiss="modal" >Close</a>
+        <%= f.submit "CREATE", :class => 'btn btn-primary' %>
+      </div>
   </div>
+     <% end %>
 </div>
 <a data-toggle="modal" href="#myModal" class="btn btn-primary mdl">ADD PROJECT</a>
