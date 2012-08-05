@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
      flash[:success] = "Story created!"               
      redirect_to @story.project                              
    else                                                 
-     render root_path                               
+     render 'new'                               
    end                                                  
  end                                                        
 

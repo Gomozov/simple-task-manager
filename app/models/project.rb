@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
 
   validates :title, :presence => true, :length => { :maximum => 80 }
   validates :user_id, :presence => true
+  validates :description, :presence => true
   
   default_scope :order => 'projects.created_at'
 

@@ -21,7 +21,7 @@ def create
         flash[:success] = "Project created!"
         redirect_to root_path
       else
-        render 'pages/home'
+        render 'new'
       end
 end
 

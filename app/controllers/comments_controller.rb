@@ -13,7 +13,7 @@ def create
       flash[:success] = "Comment created!"
       redirect_to @comment.story.project        
     else
-      render root_path
+      render 'new'
     end
 end
 
