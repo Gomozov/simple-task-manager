@@ -4,7 +4,7 @@
      <p><%= story_comment.comment %></p>
      <span class="muted"><i class="icon-user"></i> <%= story_comment.user.name %></span>
     </td></tr> 
-<% end %>
+  <% end %>
 </table>
 <%= form_for (@comment) do |f| %>
   <%= render 'layouts/error_messages', :object => f.object %>

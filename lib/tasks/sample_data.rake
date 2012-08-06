@@ -36,5 +36,12 @@ namespace :db do
       story.comments.create!(:comment => Faker::Lorem.sentence(5), :user_id => story.user.id)
     end
 
+    Project.all.each do |project|
+      begin
+        @rand_value = rand(1...50)
+      end while project.user.id == @rand_value
+      project.member!(User.find_by_id(@rand_value))
+    end
+
   end
 end

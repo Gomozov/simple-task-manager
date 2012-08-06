@@ -9,6 +9,7 @@ end
 def create
     @comment = Comment.new (params[:comment])
     @comment.user = current_user
+    @story = Story.find(params[:comment][:story_id])
     if @comment.save
       flash[:success] = "Comment created!"
       redirect_to @comment.story.project        
