@@ -3,7 +3,7 @@
     <tr><th><i class= "icon-edit"></i> Current</th></tr>                                                 
   </thead>                                                                                               
   <tbody>                                                                                                
-    <% @stories_current.each do |story| %>                                                                       
+    <% @current.each do |story| %>                                                                       
       <tr>                                                                                             
         <td style="width: 60%">                                                                        
           <%= image_tag(story.story_type + '.png', :border => 0, :style => "float: left") %>

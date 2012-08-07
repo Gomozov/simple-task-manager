@@ -51,10 +51,10 @@ end
 def show                        
   @project = Project.find(params[:id])    
   @title = @project.title
-  @stories_done = Story.find(:all, :conditions => {:state => "finished", :project_id => params[:id]} )
-  @stories_backlog = Story.find(:all, :conditions => {:state => "rejected", :project_id => params[:id]} )
-  @stories_icebox = Story.find(:all, :conditions => {:state => "not_yet_started", :project_id => params[:id]} )
-  @stories_current = Story.find(:all, :conditions => {:state => ["started", "accepted", "delivered"], :project_id => params[:id]} )
+  @done = @project.stories.where(:state => "finished")
+  @backlog = @project.stories.where(:state => "rejected")
+  @icebox = @project.stories.where(:state => "not_yet_started")
+  @current = @project.stories.where(:state => ["started", "accepted", "delivered"])
 end
 
 private

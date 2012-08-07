@@ -3,7 +3,7 @@
     <tr><th><i class= "icon-briefcase"></i> Backlog</th></tr>                                         
   </thead>                                                                                            
   <tbody>                                                                              
-    <% @stories_backlog.each do |story| %>
+    <% @backlog.each do |story| %>
       <tr>
         <td>
           <%= image_tag(story.story_type + '.png', :border => 0, :style => "float: left") %>

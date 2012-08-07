@@ -6,22 +6,22 @@
   </div>
 </div>
 <div class="row">
-  <% unless @stories_done.empty? %>
+  <% unless @done.empty? %>
     <div class="span3">
       <%= render 'layouts/feed_done' %>
     </div>
   <% end %>
-  <% unless @stories_current.empty? %>
+  <% unless @current.empty? %>
     <div class="span3">
       <%= render 'layouts/feed_current' %>
     </div>
   <% end %>
-  <% unless @stories_backlog.empty? %>
+  <% unless @backlog.empty? %>
     <div class="span3">
       <%= render 'layouts/feed_backlog' %>
     </div>
   <% end %>
-  <% unless @stories_icebox.empty? %>
+  <% unless @icebox.empty? %>
     <div class="span3">
       <%= render 'layouts/feed_icebox' %>
     </div>
