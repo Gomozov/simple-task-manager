@@ -23,24 +23,29 @@ namespace :db do
       end
     end
  
+    Project.all.each do |project|
+      begin
+        @rand_value = rand(1...50)
+      end while project.user.id == @rand_value
+      project.member!(User.find_by_id(@rand_value))
+    end
+
     story_types = ["bug", "release", "feature", "chore"]
     User.all.each do |user|
       user.projects.each do |project|
         3.times do
           user.stories.create!(:description => Faker::Company.catch_phrase, :project_id => project.id, :responsible => user.id, :story_type => story_types[rand(story_types.size)])
         end
+        if project.members.any?
+          project.members.each do |member|
+            member.stories.create!(:description => Faker::Company.catch_phrase, :project_id => project.id, :responsible => member.id, :story_type => story_types[rand(story_types.size)])
+          end
+        end
       end
     end
 
     Story.all.each do |story|
       story.comments.create!(:comment => Faker::Lorem.sentence(5), :user_id => story.user.id)
-    end
-
-    Project.all.each do |project|
-      begin
-        @rand_value = rand(1...50)
-      end while project.user.id == @rand_value
-      project.member!(User.find_by_id(@rand_value))
     end
 
   end
