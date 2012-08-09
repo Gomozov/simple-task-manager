@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: relationships
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  member_id  :integer
+#  work_id    :integer
+#
+
 class Relationship < ActiveRecord::Base
   attr_accessible :work_id, :member_id
 
