@@ -27,6 +27,7 @@ RSpec.configure do |config|
 
   def test_sign_in(user)
     session[:user_id] = user.id
+    current_user = user
   end
 
   def signed_in?
