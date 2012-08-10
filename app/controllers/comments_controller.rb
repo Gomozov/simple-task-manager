@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+before_filter :login_required
 
 def new
     @comment = Comment.new

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   before_filter :login_required, :only => [:index, :edit, :update, :show, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy          
@@ -54,14 +53,7 @@ class UsersController < ApplicationController
     redirect_to users_path             
   end                                  
   
-  private
-
-  def login_required
-    unless current_user
-      flash[:info] = "Please input your login and password first."
-      redirect_to signin_path
-    end
-  end
+private
 
   def correct_user                                     
     @user = User.find(params[:id])                     

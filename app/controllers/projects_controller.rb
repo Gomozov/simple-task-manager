@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController
-
-before_filter :login_required
 before_filter :authorized_user, :only => [:edit, :update, :destroy, :members]
 
 def members

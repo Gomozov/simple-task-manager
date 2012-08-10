@@ -15,13 +15,4 @@ before_filter :login_required
    redirect_to @project
  end
 
-private
-
-def login_required                                              
-  unless current_user                                           
-    flash[:info] = "Please input your login and password first."
-    redirect_to signin_path                                     
-  end                                                           
-end                                                             
-
 end
