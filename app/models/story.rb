@@ -21,6 +21,8 @@ class Story < ActiveRecord::Base
   has_many :comments
 
   validates :description, :presence => true, :length => { :maximum => 80 }
+  validates :project_id, :presence => true
+  validates :story_type, :presence => true
 
   state_machine :state, :initial => :not_yet_started do
     event :start do

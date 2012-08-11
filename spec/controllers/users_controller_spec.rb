@@ -99,8 +99,7 @@ describe UsersController do
     describe "failure" do
 
       before(:each) do
-        @attr = { :email => "", :name => "", :password => "",
-                                :password_confirmation => "" }
+        @attr = { :email => "", :name => "", :password => "", :password_confirmation => "" }
       end
 
       it "should render the 'edit' page" do

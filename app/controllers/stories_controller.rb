@@ -14,6 +14,7 @@ before_filter :login_required
      flash[:success] = "Story created!"               
      redirect_to @story.project                              
    else                                                 
+     @title = "Create story"
      render 'new'                               
    end                                                  
  end                                                        
@@ -23,7 +24,7 @@ before_filter :login_required
    if @story.update_attributes(params[:story])
      redirect_to @story.project
    else                                 
-     render @story.project
+     redirect_to root_path
    end  
  end                        
 
