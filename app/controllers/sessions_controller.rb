@@ -12,6 +12,7 @@ def create
     redirect_to root_url
   else
     flash[:error] = "Invalid email or password"
+    @title = "Sign in"
     render "new"
   end
 end
