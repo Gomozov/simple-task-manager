@@ -25,7 +25,7 @@
       <li><%= link_to edit_project_path(@project) do %>
             <i class="icon-pencil"></i> Edit
           <% end %></li>
-      <li><%= link_to @project, :method => :delete, :confirm => "You sure?", :title => "Delete #{@project.title}" do %>
+        <li><%= link_to @project, :method => :delete, :data => {:confirm => "You sure?"}, :title => "Delete #{@project.title}" do %>
             <i class="icon-trash"></i> Delete
           <% end %></li>
     <% end %>

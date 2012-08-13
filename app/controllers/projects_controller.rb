@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 before_filter :authorized_user, :only => [:edit, :update, :destroy, :members]
+before_filter :login_required
 
 def members
   @project = Project.find(params[:id])
@@ -17,8 +18,9 @@ def create
   @project  = current_user.projects.build(params[:project])
       if @project.save
         flash[:success] = "Project created!"
-        redirect_to root_path
+        redirect_to user_path(current_user)
       else
+        @title = "New project"
         render 'new'
       end
 end
@@ -63,13 +65,6 @@ def show
 end
 
 private
-
-def login_required
-  unless current_user      
-    flash[:info] = "Please input your login and password first."
-    redirect_to signin_path
-  end                                                           
-end                                                                                                 
 
 def authorized_user
   @project = current_user.projects.find_by_id(params[:id])
