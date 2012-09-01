@@ -1,8 +1,10 @@
-<% if @user.avatar? %>
-  <%= image_tag @user.avatar_url.to_s %>
-<% else %>
-  <%= image_tag('default 64.png', :border => 0) %>
-<% end %>
+<div style = "margin-bottom: 7px">
+  <% if @user.avatar? %>
+    <%= image_tag(@user.avatar_url.to_s, :class => 'img-polaroid') %>
+  <% else %>
+    <%= image_tag('default 64.png', :class => 'img-polaroid') %>
+  <% end %>
+</div>  
 
 <table class="table">
   <tr>

@@ -16,9 +16,9 @@
     <tr>
        <th><%= user.id %></th>
        <th><% if user.avatar? %>
-             <%= image_tag user.avatar_url(:thumb).to_s %>
+           <%= image_tag user.avatar_url(:thumb).to_s, :class => "img-circle" %>
            <% else %>
-             <%= image_tag('default 24.png', :border => 0) %>
+             <%= image_tag('default 24.png', :class => "img-circle") %>
            <% end %></th>
        <th><%= link_to user.name, user %></th>
        <th><%= user.email %></th>
