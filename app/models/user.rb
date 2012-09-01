@@ -9,10 +9,12 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  admin           :boolean
+#  avatar          :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :avatar
+  mount_uploader :avatar, AvatarUploader
 
   validates :name,  :presence => true,
                     :length   => { :maximum => 50 }
@@ -29,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "member_id", :class_name => "Relationship", :dependent => :destroy
   has_many :works, :through => :reverse_relationships, :source => :work
   has_many :comments
+  
+  default_scope :order => 'users.id'
 
   def get_responsibles
     Story.find_all_by_responsible(self.id)

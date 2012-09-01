@@ -21,3 +21,6 @@
 *.swn
 *.swm
 
+# Ignore avatars
+/public/uploads
+

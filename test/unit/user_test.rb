@@ -9,6 +9,7 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  admin           :boolean
+#  avatar          :string(255)
 #
 
 require 'test_helper'

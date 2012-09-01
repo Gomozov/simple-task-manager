@@ -12,6 +12,8 @@ gem 'will_paginate', '~>3.0.3'
 gem 'will_paginate-bootstrap'
 gem 'state_machine'
 gem 'activerecord-postgresql-adapter'
+gem 'carrierwave'
+gem "rmagick"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

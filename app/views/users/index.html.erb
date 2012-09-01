@@ -2,7 +2,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><i class= "icon-list-alt"></i></th>
+      <th style="width: 30px"><i class= "icon-list-alt"></i></th>
+      <th style="width: 60px"><i class= "icon-picture"></i> Avatar</th>
       <th><i class= "icon-user"></i> Username</th>
       <th><i class= "icon-envelope"></i> Email adress</th>
       <% if current_user.admin? %>
@@ -14,6 +15,11 @@
   <% @users.each do |user| %>
     <tr>
        <th><%= user.id %></th>
+       <th><% if user.avatar? %>
+             <%= image_tag user.avatar_url(:thumb).to_s %>
+           <% else %>
+             <%= image_tag('default 24.png', :border => 0) %>
+           <% end %></th>
        <th><%= link_to user.name, user %></th>
        <th><%= user.email %></th>
        <% if current_user.admin? && user !=current_user %>
