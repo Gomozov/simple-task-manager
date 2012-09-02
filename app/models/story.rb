@@ -24,6 +24,8 @@ class Story < ActiveRecord::Base
   validates :project_id, :presence => true
   validates :story_type, :presence => true
 
+  default_scope :order => 'stories.id'
+
   state_machine :state, :initial => :not_yet_started do
     event :start do
       transition :not_yet_started => :started

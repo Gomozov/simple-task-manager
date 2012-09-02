@@ -16,7 +16,7 @@
     <tr>
        <th><%= user.id %></th>
        <th><% if user.avatar? %>
-           <%= image_tag user.avatar_url(:thumb).to_s, :class => "img-circle" %>
+             <%= image_tag user.avatar_url(:thumb).to_s, :class => "img-circle" %>
            <% else %>
              <%= image_tag('default 24.png', :class => "img-circle") %>
            <% end %></th>

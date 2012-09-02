@@ -12,13 +12,21 @@
             <%= story.description %>
             <div style="clear:both;"></div>
           </div>
-            <span class="muted">Author:<%= story.user.name %></span><br>
-            <% if story.responsible %>
-              <span class="muted">Responsible:<%= story.get_responsible.name %></span><br>
-            <% end %>
-            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left' do %>
+            <span class="muted", style = "font-size: 10px">Author: <%= story.user.name %></span><br>
+            <div class="btn-toolbar" style="margin-top: 2px; margin-bottom: 0px">
+              <% if story.responsible %>
+                <% if story.get_responsible.avatar? %>
+                 <%= image_tag story.get_responsible.avatar_url(:thumb).to_s, :class => "img-polaroid-small pull-right", :title => story.get_responsible.name %>
+                <% else %>
+                 <%= image_tag 'default 24.png', :class => "img-polaroid-small pull-right", :title => story.get_responsible.name %>
+                <% end %>
+              <% end %>
+              <div style="position: relative; top: 7px;">
+              <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini' do %>
                  <i class= "icon-comment"></i> + <%= story.comments.count %>
-            <% end %>
+               <% end %>
+             </div> 
+            </div>  
           </td>                                                            
         </tr>
     <% end %>   

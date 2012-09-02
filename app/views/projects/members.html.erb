@@ -3,6 +3,7 @@
  <thead>
   <tr>
     <th><i class= "icon-list-alt"></i></th>
+    <th><i class= "icon-picture"></i> Avatar</th>
     <th><i class= "icon-user"></i> Username</th>
     <th><i class= "icon-envelope"></i> Email adress</th>
     <th><i class= "icon-trash"></i> Remove</th>  
@@ -12,6 +13,11 @@
   <% @members.each do |member| %>
   <tr>
     <th><%= member.id %></th>
+    <th><% if member.avatar? %>
+          <%= image_tag member.avatar_url(:thumb).to_s, :class => "img-circle" %>
+        <% else %>
+          <%= image_tag('default 24.png', :class => "img-circle") %>
+        <% end %></th>
     <th><%= link_to member.name, member %></th>
     <th><%= member.email %></th>
     <th><%= form_for @project.relationships.find_by_member_id(member.id), :html => {:method => :delete} do |f| %>

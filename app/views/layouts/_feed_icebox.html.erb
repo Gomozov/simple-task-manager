@@ -12,16 +12,24 @@
             <%= story.description %>
             <div style="clear:both;"></div>
           </div>
-          <span class="muted">Author:<%= story.user.name %></span><br>
-          <% if story.responsible %>
-            <span class="muted">Responsible:<%= story.get_responsible.name %></span><br>
-          <% end %>
-          <div class="btn-toolbar" style="margin-top: 2px; margin-bottom: 0px">
-            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini pull-left', :style => "margin-right: 3px" do %>
+          <span class="muted", style = "font-size: 10px">Author: <%= story.user.name %></span><br>
+          <div class="btn-toolbar" style="margin-top: 2px; margin-bottom: 0px;">
+           
+            <% if story.responsible %>
+              <% if story.get_responsible.avatar? %>
+                <%= image_tag story.get_responsible.avatar_url(:thumb).to_s, :class => "img-polaroid-small pull-right", :title => story.get_responsible.name %>
+              <% else %>
+                <%= image_tag 'default 24.png', :class => "img-polaroid-small pull-right", :title => story.get_responsible.name %>
+              <% end %>
+            <% end %>
+
+            <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary', :disable_with => "wait"%>
+            
+            <%= link_to new_comment_path(:story_id => story.id), :class => 'btn btn-mini' do %>
               <i class= "icon-comment"></i> + <%= story.comments.count %>
             <% end %>
-            <%= link_to "start", story_change_state_path(:id => story.id, :new_state => :start), :class => 'btn btn-mini btn-primary pull-right', :disable_with => "wait"%>
-            <div class="btn-group">
+            
+            <div class="btn-group" style="top: 7px;">
               <%= link_to "#", :class => "btn btn-mini dropdown-toggle", :data => {:toggle => "dropdown"} do %>
                 <i class="icon-user"></i>
                 <span class="caret"></span>
@@ -32,7 +40,8 @@
                   <li><%= link_to member.name, story_path(:id => story.id, :story => {:responsible => member.id}), :method => :put %></li>
                 <% end %>  
               </ul>  
-           </div>
+            </div>
+
         </div> 
         </td>                                                                                            
       </tr>
